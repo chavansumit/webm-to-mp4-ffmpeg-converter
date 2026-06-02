@@ -1,0 +1,15 @@
+{
+  "name": "webm-to-mp4-using-ffmpeg",
+  "version": "1.0.0",
+  "description": "Fast WebM to MP4 converter with a simple browser UI and native FFmpeg backend.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@ffmpeg-installer/ffmpeg": "^1.1.0"
+  }
+}
