@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>WebM to MP4 Converter</title>
+    <link rel="preconnect" href="https://unpkg.com" />
+    <link rel="icon" href="data:," />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <section class="converter" aria-labelledby="app-title">
+        <div class="intro">
+          <p class="eyebrow">Local video conversion</p>
+          <h1 id="app-title">WebM to MP4 Converter</h1>
+          <p class="lede">Drop in a WebM file, convert it with FFmpeg, and download a compatible MP4.</p>
+        </div>
+
+        <div class="workspace">
+          <label class="drop-zone" id="dropZone">
+            <input id="fileInput" type="file" accept="video/webm,.webm" />
+            <span class="upload-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" role="img">
+                <path d="M12 3v12m0-12 4.5 4.5M12 3 7.5 7.5M4 15v3a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3v-3" />
+              </svg>
+            </span>
+            <span class="drop-title">Choose or drop a WebM video</span>
+            <span class="drop-subtitle">Your file stays on this device.</span>
+          </label>
+
+          <div class="details" id="details" hidden>
+            <video id="preview" controls muted playsinline></video>
+            <div class="file-card">
+              <div>
+                <p class="label">Selected file</p>
+                <p class="file-name" id="fileName"></p>
+              </div>
+              <p class="file-meta" id="fileMeta"></p>
+            </div>
+          </div>
+
+          <form class="settings" id="settings">
+            <div class="field">
+              <label for="quality">Quality</label>
+              <select id="quality">
+                <option value="20">High quality</option>
+                <option value="23" selected>Balanced</option>
+                <option value="28">Smaller file</option>
+              </select>
+            </div>
+
+            <div class="field">
+              <label for="mode">Mode</label>
+              <select id="mode">
+                <option value="fast" selected>Fastest for large files</option>
+                <option value="balanced">Balanced quality</option>
+              </select>
+            </div>
+
+            <div class="field">
+              <label for="audio">Audio bitrate</label>
+              <select id="audio">
+                <option value="96k">96 kbps</option>
+                <option value="128k" selected>128 kbps</option>
+                <option value="192k">192 kbps</option>
+              </select>
+            </div>
+          </form>
+
+          <div class="progress-panel" id="progressPanel" hidden>
+            <div class="progress-copy">
+              <span id="statusText">Ready</span>
+              <span id="progressText">0%</span>
+            </div>
+            <div class="progress-track" aria-hidden="true">
+              <span id="progressBar"></span>
+            </div>
+          </div>
+
+          <div class="actions">
+            <button class="primary" id="convertButton" type="button" disabled>Convert to MP4</button>
+            <a class="download" id="downloadLink" hidden>Download MP4</a>
+            <button class="ghost" id="resetButton" type="button" disabled>Reset</button>
+          </div>
+
+          <p class="message" id="message" role="status" aria-live="polite"></p>
+        </div>
+      </section>
+    </main>
+
+    <script src="vendor/ffmpeg/ffmpeg.js"></script>
+    <script src="vendor/ffmpeg/util.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
